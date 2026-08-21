@@ -1,7 +1,5 @@
 {
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "verify-ai-output",
-  "description": "Agent Skill that audits AI-generated content before you trust it.",
   "owner": {
     "name": "Itachi3355",
     "url": "https://github.com/Itachi3355"
@@ -13,5 +11,8 @@
       "source": "./",
       "category": "productivity"
     }
-  ]
+  ],
+  "metadata": {
+    "description": "Agent Skill that audits AI-generated content before you trust it."
+  }
 }
