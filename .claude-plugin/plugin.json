@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "verify-ai-output",
+  "description": "Audits AI-generated content for reliability and produces a structured Trust Report classifying every claim and flagging hallucination risk.",
+  "version": "0.1.0",
+  "author": {
+    "name": "Itachi3355",
+    "url": "https://github.com/Itachi3355"
+  },
+  "homepage": "https://github.com/Itachi3355/verify-ai-output",
+  "license": "MIT",
+  "keywords": ["ai-safety", "fact-checking", "hallucination-detection", "verification"]
+}

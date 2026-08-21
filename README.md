@@ -10,7 +10,7 @@ Given any AI-generated content — a research summary, code explanation, medical
 
 1. **Extracts and classifies every claim**: Factual / Inference / Speculation / Unverifiable
 2. **Verifies checkable claims against primary sources** (web search, official docs, or programmatic checks for code), load-bearing claims first
-3. **Scans for 8 hallucination risk patterns** — fabricated citations, composition errors, invented API features, temporal decay, false consensus, and more (see `references/risk-signals.md`)
+3. **Scans for 8 hallucination risk patterns** — fabricated citations, composition errors, invented API features, temporal decay, false consensus, and more (see [`references/risk-signals.md`](skills/verify-ai-output/references/risk-signals.md))
 4. **Audits the language layer** for overconfidence, vague attribution, and missing caveats
 5. **Outputs a fixed-format Trust Report** ending with "What to check before relying on this" and "Limits of this audit"
 
@@ -18,14 +18,23 @@ The core principle: an audit that says "looks fine" is worthless. An audit that 
 
 ## Install
 
-**Claude.ai / Claude app:** upload `verify-ai-output.skill` (or this folder's `SKILL.md`) in a chat and tap **Save skill**.
+**Claude Code (plugin, recommended):**
 
-**Claude Code:** copy this folder into your skills directory:
+```
+/plugin marketplace add Itachi3355/verify-ai-output
+```
+
+Then `/plugin install verify-ai-output@verify-ai-output`.
+
+**Claude Code (skill directory):**
 
 ```bash
-git clone https://github.com/itachi3355/verify-ai-output.git
-cp -r verify-ai-output ~/.claude/skills/verify-ai-output
+git clone --depth 1 https://github.com/Itachi3355/verify-ai-output.git /tmp/vao && cp -r /tmp/vao/skills/verify-ai-output ~/.claude/skills/
 ```
+
+**Claude.ai / Claude app:** download the repo (**Code → Download ZIP**), unzip it, re-zip the inner `skills/verify-ai-output` folder, then upload that `.zip` in a chat and tap **Save skill**. The skill folder must be the zip root.
+
+> **Name collision:** Anthropic ships a bundled skill also called `verify-ai-output`. If you have it, install this one under a different name — rename the folder (e.g. `~/.claude/skills/trust-report-audit`) and change `name:` in its `SKILL.md` to match.
 
 ## Usage
 
@@ -55,12 +64,14 @@ Full worked examples are in [`examples/`](examples/). Test prompts are in [`eval
 
 ```
 verify-ai-output/
-├── SKILL.md                    # The skill: workflow + Trust Report format
-├── references/
-│   └── risk-signals.md         # 8 hallucination patterns + prioritization rule
-├── evals/
-│   └── evals.json              # Test prompts for regression-testing the skill
+├── skills/verify-ai-output/
+│   ├── SKILL.md                # The skill: workflow + Trust Report format
+│   └── references/
+│       └── risk-signals.md     # 8 hallucination patterns + prioritization rule
+├── .claude-plugin/             # plugin.json + marketplace.json (Claude Code install)
+├── evals/evals.json            # Test prompts for regression-testing the skill
 ├── examples/                   # Worked Trust Reports from real test runs
+├── validate.py                 # Repo self-check, run in CI on every push
 └── LICENSE                     # MIT
 ```
 
@@ -68,7 +79,9 @@ verify-ai-output/
 
 This skill operationalizes epistemic hygiene: calibration auditing, hallucination detection, claim-level provenance, and honest reporting of verification limits. It is deliberately built to *refuse self-leniency* — when asked to audit its own output, the agent applies the identical protocol.
 
-Contributions welcome — especially new risk patterns for `references/risk-signals.md` and adversarial test cases for `evals/`.
+It pairs naturally with [prompt-injection-audit](https://github.com/Itachi3355/prompt-injection-audit) as part of a practical AI-safety tooling set: this one checks whether you can trust what a model *said*, that one checks whether an attacker can control what it *does*.
+
+Contributions welcome — especially new risk patterns for `skills/verify-ai-output/references/risk-signals.md` and adversarial test cases for `evals/`. Run `python validate.py` before opening a PR.
 
 ## License
 
