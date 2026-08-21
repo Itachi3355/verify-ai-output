@@ -23,7 +23,7 @@ The core principle: an audit that says "looks fine" is worthless. An audit that 
 **Claude Code:** copy this folder into your skills directory:
 
 ```bash
-git clone https://github.com/<your-username>/verify-ai-output.git
+git clone https://github.com/itachi3355/verify-ai-output.git
 cp -r verify-ai-output ~/.claude/skills/verify-ai-output
 ```
 
