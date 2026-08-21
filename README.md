@@ -38,7 +38,19 @@ git clone --depth 1 https://github.com/Itachi3355/verify-ai-output.git /tmp/vao 
 
 ## Usage
 
-Just paste AI-generated content and say any of:
+Invoke it explicitly, then paste the content:
+
+```
+/verify-ai-output
+```
+
+**Explicit invocation is the reliable entry point.** In testing, prompts like
+*"An AI wrote this — verify it before I publish"* were understood but did **not**
+reliably auto-invoke the skill: Claude tends to just fact-check directly, which
+produces a correct answer with none of the Trust Report structure. If you paste
+content and get a free-form reply, name the skill.
+
+These phrasings will sometimes trigger it unprompted, but don't rely on it:
 
 - "Verify this"
 - "Can I trust this AI report?"
