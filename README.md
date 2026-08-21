@@ -16,6 +16,42 @@ Given any AI-generated content — a research summary, code explanation, medical
 
 The core principle: an audit that says "looks fine" is worthless. An audit that says *"these 3 claims are load-bearing and unverified — check them here"* is valuable even when the content is mostly correct.
 
+## Demo
+
+<details>
+<summary><b>Full Trust Report on an AI-drafted health blog paragraph</b> (click to expand)</summary>
+
+**Prompt:** `/verify-ai-output` — "An AI wrote this for my health blog, verify it before I publish: *Sleep deprivation definitively reduces cognitive performance by 43%, as proven by Harrison & Chen (2019, Journal of Cognitive Science). Researchers agree that eight hours is the universally optimal sleep duration for all adults. The WHO currently classifies sleep deprivation as a Group 1 carcinogen. Since memory consolidation occurs during REM sleep, students should always study immediately before bed.*"
+
+---
+
+# Trust Report: AI-drafted health blog passage on sleep deprivation
+
+## Verdict
+**SIGNIFICANT PROBLEMS FOUND.** All four core claims are fabricated, non-existent, or materially wrong on the specifics. Do not publish as written. This is health content — a medical/scientific reviewer should sign off on any corrected version.
+
+## Claim audit
+| # | Claim (abridged) | Type | Verdict | Evidence / source |
+|---|------------------|------|---------|-------------------|
+| 1 | "reduces cognitive performance by 43%" | F | **No source found** | No study supports a single universal figure; effects are task- and individual-dependent. No named counter-figure is asserted here in its place. |
+| 2 | "Harrison & Chen (2019, Journal of Cognitive Science)" | F | **Likely fabricated** | No such paper located; a real Harrison & Horne line on sleep appears blended with an invented co-author, year, and journal. |
+| 3 | "eight hours is universally optimal for all adults" | F/S | **Contradicted** | National Sleep Foundation gives a *range* (7–9h) with individual variation. Consensus is checkable (F); "optimal" is a judgment (S). |
+| 4 | "REM consolidation → always study before bed" | I | **Logic gap** | Consolidation spans slow-wave and REM sleep; the "always" conclusion does not follow from the premise. |
+
+## Red flags
+Citation-shaped fabrication (#1), suspiciously specific number (#2), confident institutional attribution + composition error on the IARC classification (#3).
+
+## What to check before relying on this
+1. The 43% statistic — do not publish; source to a specific study or cut it.
+2. The Harrison & Chen citation — treat as fabricated unless you produce a working DOI.
+3. Sleep-duration guidance — replace with the 7–9h adult range (sleepfoundation.org / AASM).
+4. The carcinogen claim — correct to: IARC classifies *night shift work involving circadian disruption* as Group 2A, not sleep deprivation as Group 1.
+
+## Limits of this audit
+Verified against web sources today; a paper that appears not to exist cannot be positively disproven (null result). Factual accuracy only, not clinical soundness — have a professional review the corrected copy.
+
+</details>
+
 ## Install
 
 **Claude Code (plugin, recommended):**
