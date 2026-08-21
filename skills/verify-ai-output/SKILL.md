@@ -28,6 +28,8 @@ Break the content into individual checkable claims. Classify each one:
 - **S — Speculation / opinion**: predictions, judgments, recommendations. Not falsifiable now; flag if presented as fact.
 - **U — Unverifiable**: private data, unsourced statistics, claims about internal states, or anything with no accessible primary source.
 
+A claim that is genuinely part fact and part judgment may be typed as a pair — **F/S** for "researchers agree eight hours is optimal", where the consensus is checkable but "optimal" is a value judgment. Use a pair only when both halves are load-bearing; otherwise pick the dominant type.
+
 Read `references/risk-signals.md` for the hallucination risk patterns to scan for during this step (fabricated citations, suspiciously specific numbers, confident attribution, etc.).
 
 ### Step 3 — Verify what is checkable
@@ -86,6 +88,7 @@ Keep the report proportionate: short content gets a short report, but never drop
 
 - Do not soften findings to be agreeable. A contradicted claim is "Contradicted", not "may need a second look".
 - Do not claim to have verified something you only pattern-matched against memory. The verdict "No source found" is honest and useful.
+- Every figure, date, quote, or citation *the audit itself introduces* carries its own source, or is explicitly marked unsourced. Answering an unsourced "43%" with an unsourced "~25%" reproduces the exact failure being reported — risk signal #2 applies to your own output.
 - If the content is in a high-stakes domain (medical, legal, financial), state in the Verdict section that the audit does not replace professional advice.
 - If the user supplies the sources alongside the content, check against those sources first; only then search externally.
 - If asked to audit your own earlier output in the conversation, apply the identical protocol — no self-leniency.
